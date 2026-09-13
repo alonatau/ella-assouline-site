@@ -445,7 +445,6 @@
   <a class="fab" data-wa data-magnetic aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.09c-.24.68-1.42 1.31-1.96 1.35-.5.04-.95.24-3.2-.67-2.71-1.07-4.42-3.86-4.55-4.04-.13-.18-1.09-1.45-1.09-2.76 0-1.31.69-1.96.93-2.23.24-.27.53-.34.71-.34.18 0 .35 0 .51.01.16.01.39-.06.6.46.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.54.15.27.67 1.11 1.44 1.8.99.88 1.83 1.16 2.09 1.29.26.13.41.11.56-.07.15-.18.65-.76.82-1.02.17-.26.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.43.2.5.31.06.12.06.66-.18 1.34z"/></svg></a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -555,20 +554,7 @@
     if(heroInner)heroInner.style.opacity=String(Math.max(1-y/700,0)); }
   if(!reduce&&fine){kinetic();window.addEventListener('scroll',kinetic,{passive:true});}
 
-  // inertia scroll with watchdog. skipped inside embedded frames where wheel hijacking misbehaves
-  var lenis=null,scrollFails=0,standalone=true;
-  try{standalone=(window.self===window.top);}catch(e){standalone=false;}
-  if(!reduce&&window.Lenis&&fine&&standalone){
-    try{
-      lenis=new Lenis({duration:1.15,smoothWheel:true});
-      (function lraf(t){if(lenis)lenis.raf(t);requestAnimationFrame(lraf);})();
-      window.addEventListener('wheel',function(){
-        var y0=scrollY;
-        setTimeout(function(){ if(Math.abs(scrollY-y0)<2){scrollFails++;if(scrollFails>=3&&lenis){try{lenis.destroy();}catch(e){}lenis=null;}} else{scrollFails=0;} },260);
-      },{passive:true});
-      document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length>1&&lenis){var el=document.querySelector(id);if(el){e.preventDefault();lenis.scrollTo(el);}}});});
-    }catch(err){lenis=null;}
-  }
+  // native scroll only. anchor links use CSS scroll-behavior:smooth. no smooth-scroll library.
 
   if(reduce) return;
 

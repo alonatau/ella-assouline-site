@@ -212,10 +212,10 @@
   .book-form .submit button{background:var(--tx);color:var(--bg);border:1px solid var(--tx);cursor:pointer;font-size:.66rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;padding:1.15em 3.2em;transition:background .4s,color .4s;will-change:transform}
   #site[lang="he"] .book-form .submit button{letter-spacing:.08em;font-size:.95rem;text-transform:none}
   .book-form .submit button:hover{background:transparent;color:var(--tx)}
-  .book-direct{margin-top:7vh;display:flex;gap:16px 46px;justify-content:center;flex-wrap:wrap}
-  .book-direct a{font-size:.92rem;font-weight:500}
-  .book-direct a .t{font-size:.56rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--grey);display:block;margin-bottom:4px}
-  #site[lang="he"] .book-direct a .t{letter-spacing:.08em;font-size:.74rem}
+  .socials{margin-top:7vh;display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+  .soc{width:56px;height:56px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--tx);transition:border-color .3s,color .3s,transform .3s}
+  .soc svg{width:23px;height:23px}
+  .soc:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
 
   footer{border-top:1px solid var(--hair);padding-block:60px 110px}
   .foot-mark{display:block;text-align:center;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
@@ -426,10 +426,10 @@
         <div class="field full"><label for="f-city" data-he="עיר או אזור" data-en="City or area">עיר או אזור</label><input id="f-city" type="text"></div>
         <div class="submit"><button type="submit" data-magnetic data-he="שליחה בוואטסאפ" data-en="Send on WhatsApp">שליחה בוואטסאפ</button></div>
       </form>
-      <div class="book-direct rv">
-        <a data-wa><span class="t">WhatsApp</span><span class="phone-disp">050-686-5150</span></a>
-        <a data-tel><span class="t" data-he="טלפון" data-en="Phone">טלפון</span><span class="phone-disp">050-686-5150</span></a>
-        <a id="igDirect" target="_blank" rel="noopener"><span class="t">Instagram</span>@____ella.makeup</a>
+      <div class="socials rv">
+        <a class="soc" id="igDirect" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="soc" id="ttDirect" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.32 2.16 1.53 3.63 3.5 3.86v2.43c-1.19.11-2.35-.19-3.5-.83v5.74c0 3.27-2.43 5.7-5.5 5.7-2.88 0-5.2-2.22-5.2-5.08 0-3 2.43-5.24 5.5-5.02v2.5c-.4-.11-.8-.16-1.2-.16-1.42 0-2.5 1.06-2.5 2.56s1.08 2.6 2.6 2.6c1.5 0 2.6-1.12 2.6-2.94V3h3.2z"/></svg></a>
+        <a class="soc" id="fbDirect" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 21v-8h2.68l.4-3.11h-3.08V7.9c0-.9.25-1.51 1.54-1.51h1.65V3.61c-.29-.04-1.27-.12-2.42-.12-2.39 0-4.03 1.46-4.03 4.15v2.32H7.66V13h2.68v8h3.26z"/></svg></a>
       </div>
     </div>
   </section>
@@ -450,6 +450,7 @@
   "use strict";
   var CONFIG={phoneIntl:'972506865150',phoneDisplay:'050-686-5150',
     instagram:'https://www.instagram.com/____ella.makeup',tiktok:'https://www.tiktok.com/@ellaassouline12',
+    facebook:'https://www.facebook.com/share/1HE21FwySY/?mibextid=wwXIfr',
     igReels:'https://www.instagram.com/____ella.makeup/reels/',
     reel1:'https://www.instagram.com/p/DbEfQFEqrr7/',reel2:'https://www.instagram.com/p/DbEA_c0qQuT/',reel3:'https://www.tiktok.com/@ellaassouline12'};
   var site=document.getElementById('site');
@@ -463,6 +464,7 @@
   document.querySelectorAll('[data-tel]').forEach(function(el){el.setAttribute('href','tel:+'+CONFIG.phoneIntl);});
   document.querySelectorAll('.phone-disp').forEach(function(el){el.textContent=CONFIG.phoneDisplay;});
   setH('igDirect',CONFIG.instagram);setH('ttBtn',CONFIG.tiktok);setH('reelsBtn',CONFIG.igReels);
+  setH('ttDirect',CONFIG.tiktok);setH('fbDirect',CONFIG.facebook);
   setH('reel1',CONFIG.reel1);setH('reel2',CONFIG.reel2);setH('reel3',CONFIG.reel3);
   var yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
 

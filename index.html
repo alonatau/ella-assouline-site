@@ -7,6 +7,7 @@
 <title>Ella Assouline | Makeup Artist</title>
 </head>
 <body style="margin:0;background:#F6EAE5">
+<script>try{var t=localStorage.getItem("ea-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
 <title>Ella Assouline Makeup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,6 +53,9 @@
   .fx a:hover,.fx button:hover{color:var(--accent)}
   .fx-logo{top:22px;left:50%;transform:translateX(-50%);z-index:81}
   .fx-logo img{height:46px;width:auto}
+  .logo-white{display:none}
+  :root[data-theme="dark"] .logo-ink,#site[data-theme="dark"] .logo-ink{display:none}
+  :root[data-theme="dark"] .logo-white,#site[data-theme="dark"] .logo-white{display:block}
   .fx-lang{top:30px;inset-inline-start:32px}
   .fx-menu{top:30px;inset-inline-end:32px;display:flex;gap:30px;align-items:center}
 
@@ -286,12 +290,12 @@
 
 <div id="site" dir="rtl" lang="he">
 
-  <div id="loader"><div class="lo"><img class="logo-img" src="assets/logo-ink.png" alt="Ella Assouline Makeup"><div class="bar"><i id="loBar"></i></div><div class="pct" id="pct">0</div></div></div>
+  <div id="loader"><div class="lo"><img class="logo-img logo-ink" src="assets/logo-ink2.png" alt="Ella Assouline Makeup"><img class="logo-img logo-white" src="assets/logo-white2.png" alt="" aria-hidden="true"><div class="bar"><i id="loBar"></i></div><div class="pct" id="pct">0</div></div></div>
   <div id="prog"></div>
   <div id="grain" aria-hidden="true"></div>
   <div id="cur"><span class="cl"></span></div>
 
-  <a class="fx fx-logo" href="#top" aria-label="Ella Assouline Makeup"><img class="logo-img" src="assets/logo-ink.png" alt="Ella Assouline Makeup"></a>
+  <a class="fx fx-logo" href="#top" aria-label="Ella Assouline Makeup"><img class="logo-img logo-ink" src="assets/logo-ink2.png" alt="Ella Assouline Makeup"><img class="logo-img logo-white" src="assets/logo-white2.png" alt="" aria-hidden="true"></a>
   <div class="fx fx-lang"><button id="langBtn">EN / עב</button></div>
   <nav class="fx fx-menu">
     <a href="#work" data-he="עבודות" data-en="Work">עבודות</a>
@@ -460,7 +464,7 @@
   <footer>
     <div class="wrap"><a class="foot-mark" href="#top">ELLA ASSOULINE</a></div>
     <div class="wrap foot-in">
-      <a href="#top" aria-label="Ella Assouline Makeup"><img class="logo-img" src="assets/logo-ink.png" alt="Ella Assouline Makeup"></a>
+      <a href="#top" aria-label="Ella Assouline Makeup"><img class="logo-img logo-ink" src="assets/logo-ink2.png" alt="Ella Assouline Makeup"><img class="logo-img logo-white" src="assets/logo-white2.png" alt="" aria-hidden="true"></a>
       <span class="r">© <span id="yr"></span> Ella Assouline Makeup, <span data-he="ישראל" data-en="Israel">ישראל</span></span>
     </div>
   </footer>
@@ -487,10 +491,6 @@
     theme=t;
     site.setAttribute('data-theme',t);
     try{document.documentElement.setAttribute('data-theme',t);}catch(e){}
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      var src=img.getAttribute('src')||'';
-      img.setAttribute('src',src.replace(/logo-(white|ink)\.png/,'logo-'+(t==='light'?'ink':'white')+'.png'));
-    });
   }
   document.querySelectorAll('[data-theme-toggle]').forEach(function(b){
     b.addEventListener('click',function(){applyTheme(theme==='light'?'dark':'light');try{localStorage.setItem('ea-theme',theme);}catch(e){}});
@@ -677,6 +677,7 @@
     requestAnimationFrame(mqTick);})();
 })();
 </script>
+
 
 </body>
 </html>
